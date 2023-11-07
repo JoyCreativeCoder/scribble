@@ -8,11 +8,12 @@ const NoteForm = ({
   textAreaValue,
   setTextAreaValue,
 }) => {
-  function handleChange(e) {
-    let content = e.target.value;
-    setTextAreaValue(content);
-    // newNote.content = content;
+
+  function handleInput(e) {
+    setTextAreaValue(e.target.value);
   }
+  
+
   return (
     <>
       <div className="editor_container">
@@ -25,7 +26,7 @@ const NoteForm = ({
             rows="10"
             placeholder="Take a note...."
             value={textAreaValue}
-            onChange={handleChange}
+            onInput={handleInput}
           ></textarea>
         </form>
       </div>

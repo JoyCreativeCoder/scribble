@@ -5,47 +5,26 @@ import NoteList from "./NoteList";
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-
-/*
-when the add icon is clicked
-1; go and render a new note form component;
-2; create new note object
-3; Add input event to the textarea
-4; on input :
-1. get the object content property and set it to be e.target.value
-5; push the object to the notes array.
-*/
-
 function App() {
   const [notes, setNotes] = useState([]);
   const [textAreaValue, setTextAreaValue] = useState("");
-    const initialNewNote = {
+  const [showNoteForm, setShowNoteForm] = useState(false);
+
+  function addNote() {
+    setShowNoteForm(true);
+
+    const newNote = {
       id: uuidv4(),
-      content: "",
+      content: textAreaValue,
     };
-    const [newNote, setNewNote] = useState(initialNewNote);
 
-    function addNote() {
+    // newNote.content = textAreaValue;
+    const updatedNote = [...notes, newNote];
+    setNotes(updatedNote);
 
-        setNewNote({
-            id: uuidv4(),
-            content: textAreaValue,
-          });
-
-        const updatedNote = [...notes, newNote];
-        setNotes(updatedNote);
-        newNote.content = textAreaValue;
-
-        console.log(updatedNote);
-
-      
-          setTextAreaValue("");
-
-          setNewNote({
-            id: uuidv4(),
-            content: "",
-          });
-    }
+    console.log(notes)
+    setTextAreaValue("");
+  }
 
   return (
     <Router>
@@ -64,14 +43,16 @@ function App() {
           <Route
             path="/NoteForm"
             element={
-              <NoteForm
-                notes={notes}
-                setNotes={setNotes}
-                addNote={addNote}
-                // newNote={newNote}
-                textAreaValue={textAreaValue}
-                setTextAreaValue={setTextAreaValue}
-              />
+              showNoteForm && (
+                <NoteForm
+                  notes={notes}
+                  setNotes={setNotes}
+                  addNote={addNote}
+                  // newNote={newNote}
+                  textAreaValue={textAreaValue}
+                  setTextAreaValue={setTextAreaValue}
+                />
+              )
             }
           />
         </Routes>
