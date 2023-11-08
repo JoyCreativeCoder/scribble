@@ -34,7 +34,7 @@ body{
 /* home_page */
 
 .home-content{
-    background-color: #333333;
+    /* background-color: #333333; */
     height: 100vh;
     width: 100vw;
 }
@@ -49,7 +49,7 @@ body{
 .note_list_content{
     display: flex;
     justify-content: center;
-    background-color:#333333;
+    background:linear-gradient(180deg, #333333, #000000);
     height: 100vh;
     width: 100vw;
 }

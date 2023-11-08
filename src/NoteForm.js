@@ -1,4 +1,5 @@
 import { HeaderTwo } from "./Header";
+import { useRef, useEffect } from "react";
 
 const NoteForm = ({
   notes,
@@ -8,11 +9,18 @@ const NoteForm = ({
   textAreaValue,
   setTextAreaValue,
 }) => {
+  const textAreaRef = useRef(null);
+
+  useEffect(() => {
+    // Set focus to the text area when the component mounts
+    if (textAreaRef.current) {
+      textAreaRef.current.focus();
+    }
+  }, []);
 
   function handleInput(e) {
     setTextAreaValue(e.target.value);
   }
-  
 
   return (
     <>
@@ -20,6 +28,7 @@ const NoteForm = ({
         <HeaderTwo onAddNote={addNote} />
         <form action="" className="note-form">
           <textarea
+            ref={textAreaRef}
             name="note-editor"
             className="editor_textarea"
             cols="30"

@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import NoteForm from "./NoteForm";
 import NoteList from "./NoteList";
-import React, { useState } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
@@ -12,18 +12,18 @@ function App() {
 
   function addNote() {
     setShowNoteForm(true);
+    if (textAreaValue.trim() !== "") {
+      const newNote = {
+        id: uuidv4(),
+        content: textAreaValue,
+      };
 
-    const newNote = {
-      id: uuidv4(),
-      content: textAreaValue,
-    };
+      const updatedNote = [...notes, newNote];
+      setNotes(updatedNote);
+      console.log(updatedNote);
 
-    // newNote.content = textAreaValue;
-    const updatedNote = [...notes, newNote];
-    setNotes(updatedNote);
-
-    console.log(notes)
-    setTextAreaValue("");
+      setTextAreaValue("");
+    }
   }
 
   return (
