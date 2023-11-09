@@ -25,6 +25,7 @@ function App() {
     const updatedNote = [...notes, newNote];
     setNotes(updatedNote);
     console.log(updatedNote);
+    
   }
 
   // if (textAreaValue.trim() !== "") {
