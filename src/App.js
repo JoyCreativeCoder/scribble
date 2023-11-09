@@ -12,19 +12,24 @@ function App() {
 
   function addNote() {
     setShowNoteForm(true);
-    if (textAreaValue.trim() !== "") {
-      const newNote = {
-        id: uuidv4(),
-        content: textAreaValue,
-      };
-
-      const updatedNote = [...notes, newNote];
-      setNotes(updatedNote);
-      console.log(updatedNote);
-
-      setTextAreaValue("");
-    }
+    setTextAreaValue("");
   }
+
+  function saveNote() {
+    let noteContent = textAreaValue;
+    const newNote = {
+      id: uuidv4(),
+      content: noteContent,
+    };
+
+    const updatedNote = [...notes, newNote];
+    setNotes(updatedNote);
+    console.log(updatedNote);
+  }
+
+  // if (textAreaValue.trim() !== "") {
+
+  // }
 
   return (
     <Router>
@@ -51,6 +56,7 @@ function App() {
                   // newNote={newNote}
                   textAreaValue={textAreaValue}
                   setTextAreaValue={setTextAreaValue}
+                  saveNote={saveNote}
                 />
               )
             }

@@ -42,17 +42,32 @@ body{
 /* note list */
 
 .your_scribble{
-    margin:0px;
+    margin:10px;
+    padding-left: 20px;
     color:#DEEFE7;
 }
 
-.note_list_content{
-    display: flex;
-    justify-content: center;
+.note_list_content_bg{
     background:linear-gradient(180deg, #333333, #000000);
     height: 100vh;
     width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
 }
+
+
+.note_item_container{
+    list-style-type: none;
+}
+
+.note_item_container li{
+    color:black;
+    height: 150px;
+    width: 500px;
+    background-color: #B4BEC9;
+}
+
 
 /* note_editor */
 

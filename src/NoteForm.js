@@ -8,6 +8,8 @@ const NoteForm = ({
   newNote,
   textAreaValue,
   setTextAreaValue,
+  saveNote
+
 }) => {
   const textAreaRef = useRef(null);
 
@@ -25,7 +27,8 @@ const NoteForm = ({
   return (
     <>
       <div className="editor_container">
-        <HeaderTwo onAddNote={addNote} />
+                  
+        <HeaderTwo onAddNote={addNote} saveNote={saveNote}  />
         <form action="" className="note-form">
           <textarea
             ref={textAreaRef}
@@ -35,7 +38,7 @@ const NoteForm = ({
             rows="10"
             placeholder="Take a note...."
             value={textAreaValue}
-            onInput={handleInput}
+            onChange={handleInput}
           ></textarea>
         </form>
       </div>
