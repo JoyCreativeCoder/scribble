@@ -7,30 +7,45 @@ import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [notes, setNotes] = useState([]);
-  const [textAreaValue, setTextAreaValue] = useState("");
-  const [showNoteForm, setShowNoteForm] = useState(false);
+  const [newNote, setNewNote] = useState("");
+  const [showNoteForm, setShowNoteForm] = useState(true);
 
-  function addNote() {
+  function createNewNote() {
     setShowNoteForm(true);
-    setTextAreaValue("");
-  }
-
-  function saveNote() {
-    let noteContent = textAreaValue;
-    const newNote = {
+  
+    const newNoteObject = {
       id: uuidv4(),
-      content: noteContent,
+      content: '',
     };
+  
+    // Update the state and log the updated state
+    setNotes((prevNotes) => {
+      const updatedNotes = [...prevNotes, newNoteObject];
+      console.log("Updated notes:", updatedNotes);
+      return updatedNotes;
+    });
+  
+    setNewNote("");
 
-    const updatedNote = [...notes, newNote];
-    setNotes(updatedNote);
-    console.log(updatedNote);
     
   }
+  
 
-  // if (textAreaValue.trim() !== "") {
+  function saveNote() {
+    if (notes.length > 0) {
+      const addedNote = notes.length - 1;
+      const updatedNotes = [...notes];
 
-  // }
+      updatedNotes[addedNote] = {
+        ...updatedNotes[addedNote], // Copy the existing properties of the last note
+        content: newNote, // Update the 'content' property with the new content
+      };
+      setNotes(updatedNotes);
+      console.log(notes);
+    } else {
+      console.log("No notes to save.");
+    }
+  }
 
   return (
     <Router>
@@ -39,7 +54,11 @@ function App() {
           <Route
             path="/"
             element={
-              <Home notes={notes} setNotes={setNotes} addNote={addNote} />
+              <Home
+                notes={notes}
+                setNotes={setNotes}
+                createNewNote={createNewNote}
+              />
             }
           />
           <Route
@@ -49,17 +68,15 @@ function App() {
           <Route
             path="/NoteForm"
             element={
-              showNoteForm && (
-                <NoteForm
-                  notes={notes}
-                  setNotes={setNotes}
-                  addNote={addNote}
-                  // newNote={newNote}
-                  textAreaValue={textAreaValue}
-                  setTextAreaValue={setTextAreaValue}
-                  saveNote={saveNote}
-                />
-              )
+              <NoteForm
+                notes={notes}
+                setNotes={setNotes}
+                createNewNote={createNewNote}
+                newNote={newNote}
+                setNewNote={setNewNote}
+                showNoteForm={showNoteForm}
+                saveNote={saveNote}
+              />
             }
           />
         </Routes>

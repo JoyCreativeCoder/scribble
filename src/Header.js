@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-const Header = ({ onAddNote }) => {
+const Header = ({ createNewNote }) => {
   return (
     <>
       <div className="header">
         <Link to="/NoteForm">
-          <span className="material-symbols-outlined" onClick={onAddNote}>
-            add
-          </span>
+          <span className="material-symbols-outlined" onClick={createNewNote}>add</span>
         </Link>
       </div>
     </>
@@ -16,14 +15,60 @@ const Header = ({ onAddNote }) => {
 
 export default Header;
 
-export const HeaderTwo = ({ onAddNote, saveNote }) => {
+export const HeaderTwo = ({ createNewNote, saveNote }) => {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
+  };
   return (
-    <div className="header_two">
-      <span className="material-symbols-outlined" onClick={onAddNote} title="New Note">
-        add
-      </span>
-      <span className="material-symbols-outlined" onClick={saveNote} title="Save Note" >file_save</span>
-      <span className="material-symbols-outlined" title="Menu">more_horiz</span>
-    </div>
+    <>
+      <div className="header_two">
+        <div className="icon-hover-bg">
+          <span
+            className="material-symbols-outlined"
+            onClick={createNewNote}
+            title="New Note"
+          >
+            add
+          </span>
+        </div>
+
+        <div className="icon-hover-bg">
+          <span
+            className="material-symbols-outlined"
+            title="Save Note"
+            onClick={saveNote}
+          >
+            file_save
+          </span>
+        </div>
+        <div className="icon-hover-bg">
+          <span
+            className="material-symbols-outlined"
+            title="Menu"
+            onClick={toggleDropdown}
+          >
+            more_horiz
+          </span>
+        </div>
+      </div>
+      {isDropdownOpen && (
+        <div className="drop-down_container">
+          <div className="drop-down-content-container">
+            <span className="material-symbols-outlined" id="notes">
+              notes
+            </span>
+            <span className="list">Note List</span>
+          </div>
+
+          <div className="drop-down-content-container-2">
+            <span className="material-symbols-outlined" id="delete">
+              delete
+            </span>
+            <span className="del">Delete Note</span>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
