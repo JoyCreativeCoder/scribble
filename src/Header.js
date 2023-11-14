@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const Header = ({ createNewNote }) => {
@@ -6,7 +7,9 @@ const Header = ({ createNewNote }) => {
     <>
       <div className="header">
         <Link to="/NoteForm">
-          <span className="material-symbols-outlined" onClick={createNewNote}>add</span>
+          <span className="material-symbols-outlined" onClick={createNewNote}>
+            add
+          </span>
         </Link>
       </div>
     </>
@@ -16,6 +19,7 @@ const Header = ({ createNewNote }) => {
 export default Header;
 
 export const HeaderTwo = ({ createNewNote, saveNote }) => {
+  const navigate = useNavigate();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -58,9 +62,10 @@ export const HeaderTwo = ({ createNewNote, saveNote }) => {
             <span className="material-symbols-outlined" id="notes">
               notes
             </span>
-            <span className="list">Note List</span>
+            <span className="list" onClick={() => navigate("/")}>
+              Note List
+            </span>
           </div>
-
           <div className="drop-down-content-container-2">
             <span className="material-symbols-outlined" id="delete">
               delete
