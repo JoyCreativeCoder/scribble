@@ -310,3 +310,13 @@ ul {
 .ql-container.ql-snow {
   border: none !important;
 }
+
+.preview{
+  height: 50vh;
+  width: 200vw;
+  background-color: #c5f263;
+  margin: auto;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+}

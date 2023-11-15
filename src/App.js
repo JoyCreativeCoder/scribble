@@ -15,7 +15,7 @@ function App() {
 
     const newNoteObject = {
       id: uuidv4(),
-      content: "",
+      content: '',
     };
 
     setNotes((prevNotes) => {
