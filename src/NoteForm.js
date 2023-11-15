@@ -1,5 +1,7 @@
 import { HeaderTwo } from "./Header";
-import { useRef, useEffect } from "react";
+// import { useRef, useEffect } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const NoteForm = ({
   notes,
@@ -10,13 +12,19 @@ const NoteForm = ({
   showNoteForm,
   saveNote,
 }) => {
-  const textAreaRef = useRef(null);
+  // const textAreaRef = useRef(null);
 
-  useEffect(() => {
-    if (showNoteForm) {
-      textAreaRef.current.focus();
-    }
-  }, [showNoteForm]);
+  // useEffect(() => {
+  //   if (showNoteForm) {
+  //     textAreaRef.current.focus();
+  //   }
+  // }, [showNoteForm]);
+
+  const modules = {
+    toolbar: [["bold", "italic", "underline", {'list': 'bullet'}]],
+  };
+
+  const formats = ["bold", "italic", "underline", "bullet"];
 
   return (
     <>
@@ -24,7 +32,7 @@ const NoteForm = ({
         <div className="editor_container">
           <HeaderTwo createNewNote={createNewNote} saveNote={saveNote} />
           <form action="" className="note-form">
-            <textarea
+            {/* <textarea
               name=""
               id=""
               cols="30"
@@ -35,7 +43,15 @@ const NoteForm = ({
               placeholder="Enter your new note"
               value={newNote}
               onInput={(e) => setNewNote(e.target.value)}
-            ></textarea>
+            ></textarea> */}
+            <ReactQuill
+              theme="snow"
+              value={newNote}
+              onChange={(value) => setNewNote(value)}
+              className="editor_textarea"
+              modules={modules}
+              formats={formats}
+            />
           </form>
         </div>
       )}

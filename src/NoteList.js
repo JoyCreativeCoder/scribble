@@ -4,7 +4,7 @@ const NoteList = ({ notes }) => {
   const [dropdownOpen, setDropdownOpen] = useState(null);
 
   const toggleNoteListDropdown = (noteId) => {
-    setDropdownOpen((prevId) => (prevId === noteId ? null : noteId)); 
+    setDropdownOpen((prevId) => (prevId === noteId ? null : noteId));
     /*
     the toggleNoteListDropdown function takes in a noteId parameter, which represents
     the id of the individual notes.Now when the toggleNoteListDropdown function is called with a note id passed to it, 
@@ -20,7 +20,8 @@ const NoteList = ({ notes }) => {
         <div className="container_note">
           {notes.map((note) => (
             <ul className="note_item_container" key={note.id}>
-              <li>{note.content}</li>
+              <li dangerouslySetInnerHTML={{ __html: note.content }} />
+              {/* to transform the text we are getting into plain text  */}
               <span
                 id={`note_list_more_icon_${note.id}`}
                 className="material-symbols-outlined"

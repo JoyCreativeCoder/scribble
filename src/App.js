@@ -12,40 +12,35 @@ function App() {
 
   function createNewNote() {
     setShowNoteForm(true);
-  
+
     const newNoteObject = {
       id: uuidv4(),
-      content: '',
+      content: "",
     };
-  
-    // Update the state and log the updated state
+
     setNotes((prevNotes) => {
       const updatedNotes = [...prevNotes, newNoteObject];
-      console.log("Updated notes:", updatedNotes);
       return updatedNotes;
     });
-  
+
     setNewNote("");
-
-    
   }
-  
 
-  function saveNote() {
-    if (notes.length > 0) {
-      const addedNote = notes.length - 1;
-      const updatedNotes = [...notes];
+  // function saveNote() {
+  //   if (notes.length > 0) {
+  //     const addedNote = notes.length - 1;
+  //     const updatedNotes = [...notes];
 
-      updatedNotes[addedNote] = {
-        ...updatedNotes[addedNote], // Copy the existing properties of the last note
-        content: newNote, // Update the 'content' property with the new content
-      };
-      setNotes(updatedNotes);
-      console.log(notes);
-    } else {
-      console.log("No notes to save.");
-    }
-  }
+  //     updatedNotes[addedNote] = {
+  //       ...updatedNotes[addedNote], // Copy the existing properties of the last note
+  //       content: newNote, // Update the 'content' property with the new content
+  //     };
+  //     setNotes(updatedNotes);
+  //     // console.log(notes);
+  //   } else {
+  //     console.log("No notes to save.");
+  //   }
+  // }
 
   return (
     <Router>
@@ -75,7 +70,7 @@ function App() {
                 newNote={newNote}
                 setNewNote={setNewNote}
                 showNoteForm={showNoteForm}
-                saveNote={saveNote}
+                // saveNote={saveNote}
               />
             }
           />
