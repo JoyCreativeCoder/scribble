@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const NoteList = ({ notes }) => {
+const NoteList = ({ notes, setShowNoteForm }) => {
   const [dropdownOpen, setDropdownOpen] = useState(null);
 
   const toggleNoteListDropdown = (noteId) => {
@@ -12,6 +12,22 @@ const NoteList = ({ notes }) => {
     so it checks if the previous state id is equal to the current id , if this is true it knows that the dropdown has been opend thus set it to null. If it is not true it knows that this is a new note so it set it to the current note id;
      */
   };
+
+  function handleEdit() {
+    setShowNoteForm(true);
+
+    // const newNoteObject = {
+    //   id: uuidv4(),
+    //   content: newNote,
+    // };
+
+    // setNotes((prevNotes) => {
+    //   const updatedNotes = [...prevNotes, newNoteObject];
+    //   return updatedNotes;
+    // });
+    
+    // setNewNote("");
+  }
 
   return (
     <>
@@ -32,11 +48,11 @@ const NoteList = ({ notes }) => {
               </span>
               {dropdownOpen === note.id && (
                 <div className="note_list_drop_container">
-                  <div className="note_list_drop_container_one">
+                  <div className="note_list_drop_container_one" onClick={()=>{console.log('clicked')}}>
                     <span className="material-symbols-outlined">edit_note</span>
                     <span className="edit-note">Edit Note</span>
                   </div>
-                  <div className="note_list_drop_container_two">
+                  <div className="note_list_drop_container_two" onClick={()=>{console.log('clicked')}}>
                     <span className="material-symbols-outlined">delete</span>
                     <span className="delete-note">Delete Note</span>
                   </div>

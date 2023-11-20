@@ -15,14 +15,14 @@ function App() {
 
     const newNoteObject = {
       id: uuidv4(),
-      content: '',
+      content: newNote,
     };
 
     setNotes((prevNotes) => {
       const updatedNotes = [...prevNotes, newNoteObject];
       return updatedNotes;
     });
-
+    
     setNewNote("");
   }
 
@@ -58,7 +58,7 @@ function App() {
           />
           <Route
             path="/NoteList"
-            element={<NoteList notes={notes} setNotes={setNotes} />}
+            element={<NoteList notes={notes} setNotes={setNotes} showNoteForm={showNoteForm}/>}
           />
           <Route
             path="/NoteForm"
