@@ -61,16 +61,16 @@ function App() {
             element={<NoteList notes={notes} setNotes={setNotes} showNoteForm={showNoteForm}/>}
           />
           <Route
-            path="/NoteForm"
+            path="NoteForm/:notes.id"
             element={
               <NoteForm
-                notes={notes}
-                setNotes={setNotes}
+                // notes={notes}
+                // setNotes={setNotes}
                 createNewNote={createNewNote}
-                newNote={newNote}
-                setNewNote={setNewNote}
-                showNoteForm={showNoteForm}
-                // saveNote={saveNote}
+                // newNote={newNote}
+                // setNewNote={setNewNote}
+                // showNoteForm={showNoteForm}
+                // // saveNote={saveNote}
               />
             }
           />

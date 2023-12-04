@@ -13,53 +13,50 @@ const NoteList = ({ notes, setShowNoteForm }) => {
      */
   };
 
-  function handleEdit() {
-    setShowNoteForm(true);
-
-    // const newNoteObject = {
-    //   id: uuidv4(),
-    //   content: newNote,
-    // };
-
-    // setNotes((prevNotes) => {
-    //   const updatedNotes = [...prevNotes, newNoteObject];
-    //   return updatedNotes;
-    // });
-    
-    // setNewNote("");
-  }
-
   return (
     <>
       <div className="note_list_content_bg">
         <h1 className="your_scribble">Your Scribble</h1>
         <div className="container_note">
-          {notes.map((note) => (
-            <ul className="note_item_container" key={note.id}>
-              <li dangerouslySetInnerHTML={{ __html: note.content }} />
-              {/* to transform the text we are getting into plain text  */}
-              <span
-                id={`note_list_more_icon_${note.id}`}
-                className="material-symbols-outlined"
-                title="Menu"
-                onClick={() => toggleNoteListDropdown(note.id)}
-              >
-                more_horiz
-              </span>
-              {dropdownOpen === note.id && (
-                <div className="note_list_drop_container">
-                  <div className="note_list_drop_container_one" onClick={()=>{console.log('clicked')}}>
-                    <span className="material-symbols-outlined">edit_note</span>
-                    <span className="edit-note">Edit Note</span>
+          <ul className="note_item_container">
+            {notes.map((note) => (
+              <li key={note.id}>
+                <div dangerouslySetInnerHTML={{ __html: note.content }}></div>
+                <span
+                  id={`note_list_more_icon_${note.id}`}
+                  className="material-symbols-outlined"
+                  title="Menu"
+                  onClick={() => toggleNoteListDropdown(note.id)}
+                >
+                  more_horiz
+                </span>
+                {dropdownOpen === note.id && (
+                  <div className="note_list_drop_container">
+                    <div
+                      className="note_list_drop_container_one"
+                      onClick={() => {
+                        console.log("clicked");
+                      }}
+                    >
+                      <span className="material-symbols-outlined">
+                        edit_note
+                      </span>
+                      <span className="edit-note">Edit Note</span>
+                    </div>
+                    <div
+                      className="note_list_drop_container_two"
+                      onClick={() => {
+                        console.log("clicked");
+                      }}
+                    >
+                      <span className="material-symbols-outlined">delete</span>
+                      <span className="delete-note">Delete Note</span>
+                    </div>
                   </div>
-                  <div className="note_list_drop_container_two" onClick={()=>{console.log('clicked')}}>
-                    <span className="material-symbols-outlined">delete</span>
-                    <span className="delete-note">Delete Note</span>
-                  </div>
-                </div>
-              )}
-            </ul>
-          ))}
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </>

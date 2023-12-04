@@ -41,8 +41,6 @@ const NoteForm = ({
   }
 
   return (
-    <>
-      {showNoteForm && (
         <div className="editor_container">
           <HeaderTwo createNewNote={createNewNote} saveNote={saveNote} />
           <form action="" className="note-form">
@@ -56,8 +54,6 @@ const NoteForm = ({
             />
           </form>
         </div>
-      )}
-    </>
   );
 };
 
