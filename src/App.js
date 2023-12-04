@@ -7,23 +7,24 @@ import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [notes, setNotes] = useState([]);
-  const [newNote, setNewNote] = useState("");
-  const [showNoteForm, setShowNoteForm] = useState(true);
+  // const [newNote, setNewNote] = useState("");
 
-  function createNewNote() {
-    setShowNoteForm(true);
+  function createAndNavigateToNewNote() {
+    const id = uuidv4();
 
     const newNoteObject = {
-      id: uuidv4(),
-      content: newNote,
+      id,
+      content: "",
     };
 
     setNotes((prevNotes) => {
       const updatedNotes = [...prevNotes, newNoteObject];
-      return updatedNotes;
+      return updatedNotes; //why did i retuen ?
     });
+
     
-    setNewNote("");
+    
+    // setNewNote("");
   }
 
   // function saveNote() {
@@ -52,24 +53,23 @@ function App() {
               <Home
                 notes={notes}
                 setNotes={setNotes}
-                createNewNote={createNewNote}
+                createAndNavigateToNewNote={createAndNavigateToNewNote}
               />
             }
           />
           <Route
             path="/NoteList"
-            element={<NoteList notes={notes} setNotes={setNotes} showNoteForm={showNoteForm}/>}
+            element={<NoteList notes={notes} setNotes={setNotes}/>}
           />
           <Route
-            path="NoteForm/:notes.id"
+            path="/:id"
             element={
               <NoteForm
                 // notes={notes}
                 // setNotes={setNotes}
-                createNewNote={createNewNote}
+                createAndNavigateToNewNote={createAndNavigateToNewNote}
                 // newNote={newNote}
                 // setNewNote={setNewNote}
-                // showNoteForm={showNoteForm}
                 // // saveNote={saveNote}
               />
             }

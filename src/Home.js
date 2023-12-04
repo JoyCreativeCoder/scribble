@@ -2,11 +2,11 @@ import Header from "./Header";
 import NoteList from "./NoteList";
 // import  { useState } from 'react';
 
-const Home = ({ notes, setNotes, createNewNote }) => {
+const Home = ({ notes, setNotes, createAndNavigateToNewNote }) => {
   const isNoteEmpty = notes.length === 0;
   return (
     <>
-      <Header createNewNote={createNewNote} />
+      <Header createAndNavigateToNewNote={createAndNavigateToNewNote} />
       <div className="home-content">
         {isNoteEmpty ? (
           <div className="wrapper">
@@ -26,7 +26,7 @@ const Home = ({ notes, setNotes, createNewNote }) => {
               />
             </svg>
             <h2 className="word-mark-logo">Scribble</h2>
-            <button className="startScribbling" onClick={createNewNote}>
+            <button className="startScribbling" onClick={createAndNavigateToNewNote}>
               Start Scribbling
             </button>
           </div>
