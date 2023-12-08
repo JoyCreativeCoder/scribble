@@ -2,7 +2,6 @@ import Header from "./Header";
 import NoteList from "./NoteList";
 
 const Home = ({ notes, setNotes, createAndNavigateToNewNote }) => {
-
   const isNoteEmpty = notes.length === 0;
   return (
     <>

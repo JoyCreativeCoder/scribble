@@ -8,23 +8,6 @@ import { useState } from "react";
 
 function Root() {
   const [notes, setNotes] = useState([]);
-  // const [newNote, setNewNote] = useState("");
-
-  // function saveNote() {
-  //   if (notes.length > 0) {
-  //     const addedNote = notes.length - 1;
-  //     const updatedNotes = [...notes];
-
-  //     updatedNotes[addedNote] = {
-  //       ...updatedNotes[addedNote], // Copy the existing properties of the last note
-  //       content: newNote, // Update the 'content' property with the new content
-  //     };
-  //     setNotes(updatedNotes);
-  //     // console.log(notes);
-  //   } else {
-  //     console.log("No notes to save.");
-  //   }
-  // }
 
   const navigate = useNavigate();
 
@@ -44,9 +27,6 @@ function Root() {
     navigate(`/${id}`);
   }
 
-
-  
-
   return (
     <div className="App">
       <Routes>
@@ -62,7 +42,7 @@ function Root() {
         />
         <Route
           path="/NoteList"
-          element={<NoteList notes={notes} setNotes={setNotes}/>}
+          element={<NoteList notes={notes} setNotes={setNotes} />}
         />
         <Route
           path="/:id"

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const NoteList = ({ notes}) => {
+const NoteList = ({ notes }) => {
   const [dropdownOpen, setDropdownOpen] = useState(null);
 
   const toggleNoteListDropdown = (noteId) => {
@@ -15,7 +15,6 @@ const NoteList = ({ notes}) => {
   };
 
   const navigate = useNavigate();
-
 
   function editNote(note) {
     const id = note.id;
@@ -41,7 +40,10 @@ const NoteList = ({ notes}) => {
                 </span>
                 {dropdownOpen === note.id && (
                   <div className="note_list_drop_container">
-                    <div className="note_list_drop_container_one" onClick={() => editNote(note)}>
+                    <div
+                      className="note_list_drop_container_one"
+                      onClick={() => editNote(note)}
+                    >
                       <span className="material-symbols-outlined">
                         edit_note
                       </span>

@@ -5,9 +5,12 @@ const Header = ({ createAndNavigateToNewNote }) => {
   return (
     <>
       <div className="header">
-          <span className="material-symbols-outlined" onClick={createAndNavigateToNewNote}>
-            add
-          </span>
+        <span
+          className="material-symbols-outlined"
+          onClick={createAndNavigateToNewNote}
+        >
+          add
+        </span>
       </div>
     </>
   );
@@ -20,7 +23,7 @@ export const HeaderTwo = ({ createAndNavigateToNewNote, saveNote }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
-    console.log("clicked")
+    console.log("clicked");
     setDropdownOpen((prevIsDropdownOpen) => !prevIsDropdownOpen);
   };
   return (

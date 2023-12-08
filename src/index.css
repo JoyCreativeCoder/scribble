@@ -125,7 +125,7 @@ body {
   flex-direction: column;
 }
 
-.word-mark-logo{
+.word-mark-logo {
   color: #c5f263;
   font-family: Inter;
   font-size: 100;
@@ -158,7 +158,6 @@ body {
     stroke-dashoffset: 0;
   }
 }
-
 
 /* note list */
 
@@ -250,13 +249,13 @@ ul {
 .edit-note {
   font-family: Roboto;
   font-weight: 400;
-  color:#0d0d0d;
+  color: #0d0d0d;
 }
 
 .delete-note {
   font-family: Roboto;
   font-weight: 400;
-  color:#0d0d0d;
+  color: #0d0d0d;
 }
 
 .note_list_drop_container_two {
@@ -307,7 +306,7 @@ ul {
   z-index: 1;
 }
 
-.ql-formats{
+.ql-formats {
   margin: auto !important;
 }
 
@@ -316,7 +315,6 @@ ul {
   stroke: #ebfadc !important;
   transition: stroke 0.1s ease, fill 0.3s ease;
 }
-
 
 .ql-toolbar button:hover .ql-stroke {
   stroke: rgb(197, 242, 99) !important;
@@ -347,7 +345,7 @@ ul {
   border: none !important;
 }
 
-.preview{
+.preview {
   height: 50vh;
   width: 200vw;
   background-color: #c5f263;
@@ -356,7 +354,6 @@ ul {
   top: 30%;
   left: 30%;
 }
-
 
 /* Drop-down styling */
 .drop-down_container {
@@ -380,7 +377,7 @@ ul {
 
 #notes,
 #delete {
-  color: #292828; 
+  color: #292828;
 }
 
 .drop-down-content-container:hover,
@@ -395,5 +392,5 @@ ul {
 .delete-note {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  color: #292828; 
+  color: #292828;
 }
