@@ -3,22 +3,32 @@ import { useNavigate } from "react-router-dom";
 
 const NoteList = ({ notes }) => {
   const [dropdownOpen, setDropdownOpen] = useState(null);
+  const navigate = useNavigate();
 
   const toggleNoteListDropdown = (noteId) => {
     setDropdownOpen((prevId) => (prevId === noteId ? null : noteId));
-    /*
-    the toggleNoteListDropdown function takes in a noteId parameter, which represents
-    the id of the individual notes.Now when the toggleNoteListDropdown function is called with a note id passed to it, 
-    it set the setDropdownOpen, now the state provides a callback function which allows us to correctly update the state based on the previous state.
-    so it checks if the previous state id is equal to the current id , if this is true it knows that the dropdown has been opend thus set it to null. If it is not true it knows that this is a new note so it set it to the current note id;
-     */
   };
 
-  const navigate = useNavigate();
+  const closeDropdown = () => {
+    setDropdownOpen(null);
+  };
 
-  function editNote(note) {
+  const editNote = (note) => {
     const id = note.id;
     navigate(`/${id}`);
+    closeDropdown(); // Close the dropdown after navigating
+  };
+
+  const deleteNote = (note) => {
+    const noteToDelete = notes.indexOf(note);
+    if (noteToDelete !== -1) {
+      notes.splice(noteToDelete, 1);
+      closeDropdown(); // Close the dropdown after deleting
+    }
+  };
+
+  if(notes.length === 0) {
+    navigate('/');
   }
 
   return (
@@ -49,7 +59,10 @@ const NoteList = ({ notes }) => {
                       </span>
                       <span className="edit-note">Edit Note</span>
                     </div>
-                    <div className="note_list_drop_container_two">
+                    <div
+                      className="note_list_drop_container_two"
+                      onClick={() => deleteNote(note)}
+                    >
                       <span className="material-symbols-outlined">delete</span>
                       <span className="delete-note">Delete Note</span>
                     </div>
