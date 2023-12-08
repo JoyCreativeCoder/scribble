@@ -1,31 +1,14 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
+import { useNavigate } from "react-router-dom";
 import NoteForm from "./NoteForm";
+import { v4 as uuidv4 } from "uuid";
 import NoteList from "./NoteList";
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
-function App() {
+function Root() {
   const [notes, setNotes] = useState([]);
   // const [newNote, setNewNote] = useState("");
-
-  function createAndNavigateToNewNote() {
-    const id = uuidv4();
-
-    const newNoteObject = {
-      id,
-      content: "",
-    };
-
-    setNotes((prevNotes) => {
-      const updatedNotes = [...prevNotes, newNoteObject];
-      return updatedNotes; //why did i retuen ?
-    });
-
-    
-    
-    // setNewNote("");
-  }
 
   // function saveNote() {
   //   if (notes.length > 0) {
@@ -43,39 +26,63 @@ function App() {
   //   }
   // }
 
+  const navigate = useNavigate();
+
+  function createAndNavigateToNewNote() {
+    const id = uuidv4();
+
+    const newNoteObject = {
+      id,
+      content: "",
+    };
+
+    setNotes((prevNotes) => {
+      const updatedNotes = [...prevNotes, newNoteObject];
+      return updatedNotes; //why did i return ?
+    });
+
+    navigate(`/${id}`);
+  }
+
+
+  
+
+  return (
+    <div className="App">
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              notes={notes}
+              setNotes={setNotes}
+              createAndNavigateToNewNote={createAndNavigateToNewNote}
+            />
+          }
+        />
+        <Route
+          path="/NoteList"
+          element={<NoteList notes={notes} setNotes={setNotes}/>}
+        />
+        <Route
+          path="/:id"
+          element={
+            <NoteForm
+              createAndNavigateToNewNote={createAndNavigateToNewNote}
+              notes={notes}
+              setNotes={setNotes}
+            />
+          }
+        />
+      </Routes>
+    </div>
+  );
+}
+
+function App() {
   return (
     <Router>
-      <div className="App">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                notes={notes}
-                setNotes={setNotes}
-                createAndNavigateToNewNote={createAndNavigateToNewNote}
-              />
-            }
-          />
-          <Route
-            path="/NoteList"
-            element={<NoteList notes={notes} setNotes={setNotes}/>}
-          />
-          <Route
-            path="/:id"
-            element={
-              <NoteForm
-                // notes={notes}
-                // setNotes={setNotes}
-                createAndNavigateToNewNote={createAndNavigateToNewNote}
-                // newNote={newNote}
-                // setNewNote={setNewNote}
-                // // saveNote={saveNote}
-              />
-            }
-          />
-        </Routes>
-      </div>
+      <Root />
     </Router>
   );
 }

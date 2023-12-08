@@ -46,17 +46,6 @@ body {
   left: 90%;
 }
 
-#notes {
-  color: #d7f5b8;
-  margin: 0px;
-}
-
-#delete {
-  color: #d7f5b8;
-  margin: 0px;
-  margin-left: 20px;
-}
-
 .drop-down-content-container {
   display: flex;
   justify-content: center;
@@ -174,20 +163,17 @@ body {
 /* note list */
 
 .your_scribble {
-  margin: 10px;
+  margin: 0px;
   padding-left: 20px;
   color: #f9ffed;
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .note_list_content_bg {
   background: #0d0d0d;
   height: 100vh;
   width: 100vw;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
 }
 
 .note_item_container {
@@ -203,10 +189,7 @@ body {
   border: 1px solid #c5f263;
   border-radius: 5px 0px 5px 0;
   word-break: break-all;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  margin: 10px;
   padding: 30px;
   overflow: hidden;
 }
@@ -267,11 +250,13 @@ ul {
 .edit-note {
   font-family: Roboto;
   font-weight: 400;
+  color:#0d0d0d;
 }
 
 .delete-note {
   font-family: Roboto;
   font-weight: 400;
+  color:#0d0d0d;
 }
 
 .note_list_drop_container_two {
@@ -370,4 +355,45 @@ ul {
   position: absolute;
   top: 30%;
   left: 30%;
+}
+
+
+/* Drop-down styling */
+.drop-down_container {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #d7f5b8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-radius: 2px;
+}
+
+.drop-down-content-container,
+.drop-down-content-container-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 0px;
+}
+
+#notes,
+#delete {
+  color: #292828; 
+}
+
+.drop-down-content-container:hover,
+.drop-down-content-container-2:hover {
+  background-color: #ababab;
+  mix-blend-mode: multiply;
+}
+
+.del,
+.list,
+.edit-note,
+.delete-note {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #292828; 
 }
