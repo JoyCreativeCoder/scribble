@@ -7,15 +7,19 @@ body {
   padding: 0px;
 }
 
+.App {
+  background-color: #1c1c1c;
+}
+
 /* header */
 .header {
-  background-color: #d7f5b8;
+  background-color: #6fb1fc;
   width: 100vw;
   height: 5vh;
 }
 
 .material-symbols-outlined {
-  color: #0d0d0d;
+  color: #1c1c1c;
   margin-top: 5px;
   margin-left: 5px;
   cursor: pointer;
@@ -24,12 +28,13 @@ body {
 /* header2 */
 
 .header_two {
-  background-color: #d7f5b8;
+  background-color: #6fb1fc;
   width: 100vw;
   height: 5vh;
   display: flex;
   justify-content: space-between;
-  /* position: fixed; */
+  position: fixed;
+  z-index: 10;
 }
 
 .drop-down_container {
@@ -115,7 +120,7 @@ body {
 }
 
 .wrapper {
-  background: #0d0d0d;
+  background: #1c1c1c;
   height: 100vh;
   width: 100vw;
   margin: 0px;
@@ -126,7 +131,7 @@ body {
 }
 
 .word-mark-logo {
-  color: #c5f263;
+  color: #6fb1fc;
   font-family: Inter;
   font-size: 100;
   font-style: normal;
@@ -139,9 +144,9 @@ body {
   width: 120px;
   height: 40px;
   background: none;
-  border: 1px solid rgb(229, 255, 169);
+  border: 1px solid #6fb1fc;
   border-radius: 8px;
-  color: white;
+  color: #f5f5f5;
   font-family: Inter;
   font-size: 14px;
   margin-top: 190px;
@@ -162,11 +167,31 @@ body {
 /* note list */
 
 .your_scribble {
-  margin: 0px;
-  padding-left: 20px;
-  color: #f9ffed;
+  padding-left: 29px;
+  padding-top: 10px;
+  color: #f5f5f5;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
+  font-size: 1.6em;
+  margin: 0px;
+}
+
+.search_bar {
+  width: 500px;
+  height: 18px;
+  border: 0.75px solid #151515;
+  border-radius: 3px;
+  background-color: #333333;
+  padding: 10px;
+  font-size: 16px;
+  color: #f5f5f5;
+}
+
+#search-icon {
+  color: #707070;
+  position: relative;
+  top: 5px;
+  left: 500px;
 }
 
 .note_list_content_bg {
@@ -175,26 +200,50 @@ body {
   width: 100vw;
 }
 
+.top-left {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-top: 20px solid rgb(56, 54, 54);
+  border-right: 20px solid #0d0d0d;
+  border-bottom: 20px solid #0d0d0d;
+  border-left: 20px solid rgb(56, 54, 54);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
+}
+
 .note_item_container {
   list-style-type: none;
+  padding-left: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .note_item_container li {
   position: relative;
-  color: white;
-  height: 100px;
+  height: 200px;
   width: 500px;
-  background-color: #242621;
-  border: 1px solid #c5f263;
-  border-radius: 5px 0px 5px 0;
+  background-color: #f5f5f5;
+  font-family: Roboto;
+  border-radius: 3px;
   word-break: break-all;
-  margin: 10px;
-  padding: 30px;
+  margin-left: 30px;
+  padding-left: 0px;
+  padding: 10px;
   overflow: hidden;
 }
 
 li:hover {
-  background-color: #e8e8e833;
+  .top-left {
+    display: none;
+  }
+}
+
+.note_item_container li p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
 }
 
 .container_note {
@@ -207,12 +256,12 @@ ul {
 }
 
 [id^="note_list_more_icon_"] {
-  color: #e8ebe5;
-  position: absolute;
-  left: 36%;
-  bottom: 80%;
+  color: #1c1c1c;
   cursor: pointer;
-  margin: auto;
+  margin-top: 0px;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .note_list_drop_container {
@@ -263,7 +312,6 @@ ul {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  /* margin-right: 6px; */
   width: 145px;
   height: 41px;
 }
@@ -273,37 +321,21 @@ ul {
   mix-blend-mode: multiply;
 }
 
-/* note_editor */
-
-/* .editor_textarea {
-  background-color: #333333;
-  height: 100vh;
-  width: 100vw;
-  font-family: Roboto;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5;
-  color: white;
-  border: none;
-  outline: none;
-}  */
-
 .ql-toolbar.ql-snow {
   border-left: none !important;
   border-right: none !important;
   border-bottom: none !important;
-  border-top: 1px solid #706d6d !important;
-  background-color: #3d3d3d;
+  border-top: 1px solid #5a5959 !important;
+  background-color: #181818;
   padding: 8px;
-  box-shadow: 0 2px 4px rgba(87, 87, 87, 0.1);
   position: absolute;
   font-family: Roboto !important;
   font-weight: 100 !important;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 10000;
+  position: fixed !important;
 }
 
 .ql-formats {
@@ -329,17 +361,33 @@ ul {
 }
 
 .ql-editor {
-  background-color: #292828;
+  background-color: #1c1c1c;
   height: 100vh !important;
   font-family: Roboto !important;
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
-  color: white;
+  color: #f5f5f5;
   border: none !important;
   outline: none !important;
+  padding-top: 50px !important;
+  box-sizing: border-box !important;
+  overflow: auto !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+::selection {
+  background-color: #333333; 
+  color: #333;
+}
+
+::-moz-selection {
+  background-color: #333333;
+  color: #333;
+}
+
 
 .ql-container.ql-snow {
   border: none !important;

@@ -16,30 +16,32 @@ const NoteList = ({ notes }) => {
   const editNote = (note) => {
     const id = note.id;
     navigate(`/${id}`);
-    closeDropdown(); // Close the dropdown after navigating
+    closeDropdown();
   };
 
   const deleteNote = (note) => {
     const noteToDelete = notes.indexOf(note);
     if (noteToDelete !== -1) {
       notes.splice(noteToDelete, 1);
-      closeDropdown(); // Close the dropdown after deleting
+      closeDropdown();
     }
   };
 
-  if(notes.length === 0) {
-    navigate('/');
+  if (notes.length === 0) {
+    navigate("/");
   }
 
   return (
-    <>
       <div className="note_list_content_bg">
         <h1 className="your_scribble">Your Scribble</h1>
+          <span class="material-symbols-outlined" id="search-icon">search</span>
+          <input type="text" className="search_bar" placeholder="Search..." />
         <div className="container_note">
           <ul className="note_item_container">
             {notes.map((note) => (
               <li key={note.id}>
-                <div dangerouslySetInnerHTML={{ __html: note.content }}></div>
+                <div className="top-left"></div>
+                <p dangerouslySetInnerHTML={{ __html: note.content }}></p>
                 <span
                   id={`note_list_more_icon_${note.id}`}
                   className="material-symbols-outlined"
@@ -73,7 +75,6 @@ const NoteList = ({ notes }) => {
           </ul>
         </div>
       </div>
-    </>
   );
 };
 

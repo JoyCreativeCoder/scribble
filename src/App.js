@@ -4,12 +4,22 @@ import { useNavigate } from "react-router-dom";
 import NoteForm from "./NoteForm";
 import { v4 as uuidv4 } from "uuid";
 import NoteList from "./NoteList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Root() {
   const [notes, setNotes] = useState([]);
 
+  useEffect(() => {
+    const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
+    setNotes(storedNotes);
+  }, []);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
+
 
   function createAndNavigateToNewNote() {
     const id = uuidv4();
@@ -26,6 +36,8 @@ function Root() {
 
     navigate(`/${id}`);
   }
+
+  
 
   return (
     <div className="App">
@@ -62,7 +74,7 @@ function Root() {
 function App() {
   return (
     <Router>
-      <Root />
+      <Root/>
     </Router>
   );
 }
