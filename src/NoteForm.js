@@ -4,8 +4,8 @@ import "react-quill/dist/quill.snow.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const NoteForm = ({ createAndNavigateToNewNote, notes, setNotes }) => {
-  const { id } = useParams(); // i used useparams to get the unique id from the url
+const NoteForm = ({ createAndNavigateToNewNote, notes, setNotes, theme, setTheme, handleHeaderChange }) => {
+  const { id } = useParams();
   const [content, setContent] = useState("");
 
   useEffect(() => {
@@ -26,17 +26,27 @@ const NoteForm = ({ createAndNavigateToNewNote, notes, setNotes }) => {
     );
   };
 
-  const modules = {
-    toolbar: [["bold", "italic", "underline"], [{ list: "bullet" }]],
+  const handleKeyDown = (event) => {
+    if (event.ctrlKey && event.key === "s") {
+      event.preventDefault(); 
+      saveNote(); 
+    }
   };
 
-  const formats = ["bold", "italic", "underline", "bullet"];
+  const modules = {
+    toolbar: [["bold", "italic", "underline", "strike"], [{ list: "bullet" }]],
+  };
+
+  const formats = ["bold", "italic", "underline", "list", "bullet", "strike"];
 
   return (
     <div className="editor_container">
       <HeaderTwo
         createAndNavigateToNewNote={createAndNavigateToNewNote}
         saveNote={saveNote}
+        theme={theme}
+        setTheme={setTheme}
+        handleHeaderChange={handleHeaderChange}
       />
       <form action="" className="note-form">
         <ReactQuill
@@ -46,6 +56,7 @@ const NoteForm = ({ createAndNavigateToNewNote, notes, setNotes }) => {
           modules={modules}
           formats={formats}
           onChange={handleQuillChange}
+          onKeyDown={handleKeyDown}
         />
       </form>
     </div>

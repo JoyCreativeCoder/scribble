@@ -1,11 +1,24 @@
 import Header from "./Header";
 import NoteList from "./NoteList";
 
-const Home = ({ notes, setNotes, createAndNavigateToNewNote }) => {
+const Home = ({
+  notes,
+  setNotes,
+  createAndNavigateToNewNote,
+  theme,
+  setTheme,
+  handleHeaderChange,
+}) => {
   const isNoteEmpty = notes.length === 0;
+
   return (
     <>
-      <Header createAndNavigateToNewNote={createAndNavigateToNewNote} />
+      <Header
+        createAndNavigateToNewNote={createAndNavigateToNewNote}
+        theme={theme}
+        setTheme={setTheme}
+        handleHeaderChange={handleHeaderChange}
+      />
       <div className="home-content">
         {isNoteEmpty ? (
           <div className="wrapper">

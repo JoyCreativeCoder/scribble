@@ -9,17 +9,24 @@ import { useState, useEffect } from "react";
 function Root() {
   const [notes, setNotes] = useState([]);
 
-  useEffect(() => {
-    const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
-    setNotes(storedNotes);
-  }, []);
+  const [theme, setTheme] = useState("#6fb1fc");
+
+  function handleHeaderChange(color) {
+    setTheme(color);
+  }
+
+  // useEffect(() => {
+  //   const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
+  //   setNotes(storedNotes);
+  // }, []);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
-  }, [notes]);
-
+  // useEffect(() => {
+  //   if (notes.length > 0) {
+  //     localStorage.setItem("notes", JSON.stringify(notes));
+  //   }
+  // }, [notes]);
 
   function createAndNavigateToNewNote() {
     const id = uuidv4();
@@ -31,13 +38,11 @@ function Root() {
 
     setNotes((prevNotes) => {
       const updatedNotes = [...prevNotes, newNoteObject];
-      return updatedNotes; //why did i return ?
+      return updatedNotes;
     });
 
     navigate(`/${id}`);
   }
-
-  
 
   return (
     <div className="App">
@@ -49,12 +54,23 @@ function Root() {
               notes={notes}
               setNotes={setNotes}
               createAndNavigateToNewNote={createAndNavigateToNewNote}
+              theme={theme}
+              setTheme={setTheme}
+              handleHeaderChange={handleHeaderChange}
             />
           }
         />
         <Route
           path="/NoteList"
-          element={<NoteList notes={notes} setNotes={setNotes} />}
+          element={
+            <NoteList
+              notes={notes}
+              setNotes={setNotes}
+              theme={theme}
+              setTheme={setTheme}
+              handleHeaderChange={handleHeaderChange}
+            />
+          }
         />
         <Route
           path="/:id"
@@ -63,6 +79,9 @@ function Root() {
               createAndNavigateToNewNote={createAndNavigateToNewNote}
               notes={notes}
               setNotes={setNotes}
+              theme={theme}
+              setTheme={setTheme}
+              handleHeaderChange={handleHeaderChange}
             />
           }
         />
@@ -74,7 +93,7 @@ function Root() {
 function App() {
   return (
     <Router>
-      <Root/>
+      <Root />
     </Router>
   );
 }

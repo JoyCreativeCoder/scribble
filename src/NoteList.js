@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const NoteList = ({ notes }) => {
+const NoteList = ({ notes, theme, setTheme, handleHeaderChange}) => {
+
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const navigate = useNavigate();
 
@@ -34,12 +35,12 @@ const NoteList = ({ notes }) => {
   return (
       <div className="note_list_content_bg">
         <h1 className="your_scribble">Your Scribble</h1>
-          <span class="material-symbols-outlined" id="search-icon">search</span>
+          <span className="material-symbols-outlined" id="search-icon">search</span>
           <input type="text" className="search_bar" placeholder="Search..." />
         <div className="container_note">
           <ul className="note_item_container">
             {notes.map((note) => (
-              <li key={note.id}>
+              <li key={note.id} style={{ border: `4px solid ${theme}` }}>
                 <div className="top-left"></div>
                 <p dangerouslySetInnerHTML={{ __html: note.content }}></p>
                 <span
@@ -56,17 +57,17 @@ const NoteList = ({ notes }) => {
                       className="note_list_drop_container_one"
                       onClick={() => editNote(note)}
                     >
-                      <span className="material-symbols-outlined">
+                      <span className="material-symbols-outlined" id="edit-note-icon">
                         edit_note
                       </span>
-                      <span className="edit-note">Edit Note</span>
+                      <span className="edit-note" id="delete-note">Edit Note</span>
                     </div>
                     <div
                       className="note_list_drop_container_two"
                       onClick={() => deleteNote(note)}
                     >
-                      <span className="material-symbols-outlined">delete</span>
-                      <span className="delete-note">Delete Note</span>
+                      <span className="material-symbols-outlined" id="delete-note-icon">delete</span>
+                      <span className="delete-note-text">Delete Note</span>
                     </div>
                   </div>
                 )}
