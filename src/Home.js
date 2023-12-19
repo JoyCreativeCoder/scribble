@@ -3,7 +3,6 @@ import NoteList from "./NoteList";
 
 const Home = ({
   notes,
-  setNotes,
   createAndNavigateToNewNote,
   theme,
   setTheme,

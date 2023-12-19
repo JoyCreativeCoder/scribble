@@ -11,10 +11,12 @@ function Root() {
 
   const [theme, setTheme] = useState("#6fb1fc");
 
+  console.log(theme)
+
   function handleHeaderChange(color) {
+    console.log("New theme color:", color);
     setTheme(color);
   }
-
   // useEffect(() => {
   //   const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
   //   setNotes(storedNotes);
@@ -44,6 +46,9 @@ function Root() {
     navigate(`/${id}`);
   }
 
+  console.log("Theme in Root:", theme);
+
+
   return (
     <div className="App">
       <Routes>
@@ -68,7 +73,6 @@ function Root() {
               setNotes={setNotes}
               theme={theme}
               setTheme={setTheme}
-              handleHeaderChange={handleHeaderChange}
             />
           }
         />
@@ -80,7 +84,6 @@ function Root() {
               notes={notes}
               setNotes={setNotes}
               theme={theme}
-              setTheme={setTheme}
               handleHeaderChange={handleHeaderChange}
             />
           }

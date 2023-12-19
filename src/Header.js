@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const Header = ({ createAndNavigateToNewNote, theme, setTheme,  handleHeaderChange }) => {
+const Header = ({ createAndNavigateToNewNote, theme}) => {
 
   return (
     <>

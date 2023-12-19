@@ -169,7 +169,6 @@ body {
   padding-left: 0px;
   padding: 20px;
   overflow: hidden;
-  border-top:4px solid  #6fb1fc;
   display: flex;
   flex-direction: column;
   justify-content: center; 
@@ -182,13 +181,8 @@ li:hover {
 }
 
 .note_item_container li p {
-  white-space: pre-line; 
   overflow: hidden;
   margin: 0;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-  -webkit-line-clamp: 12;
 }
 
 .container_note {
@@ -222,7 +216,6 @@ ul {
   left: 70%;
   top: -18%;
   border-radius: 3px;
-  /* overflow: hidden; */
 }
 
 .note_list_drop_container_one {
