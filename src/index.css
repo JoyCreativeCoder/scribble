@@ -64,9 +64,9 @@ body {
 .word-mark-logo {
   color: #6fb1fc;
   font-family: Inter;
-  font-size: 100;
+  font-size: 1.6rem;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
   margin: 0px;
 }
@@ -79,7 +79,7 @@ body {
   border-radius: 8px;
   color: #f5f5f5;
   font-family: Inter;
-  font-size: 14px;
+  font-size: 0.9rem;
   margin-top: 190px;
   transition: transform 0.3s ease-in-out;
 }
@@ -154,6 +154,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  overflow: hidden;
 }
 
 .note_item_container li {
@@ -214,7 +215,7 @@ ul {
   align-items: center;
   position: relative;
   left: 70%;
-  top: -18%;
+  top: -40%;
   border-radius: 3px;
 }
 
@@ -481,6 +482,7 @@ ul {
   justify-content: flex-start;
   gap: 18px;
   padding-left: 20px;
+  font-size: 1rem;
 }
 
 #notes-icon {
@@ -507,6 +509,7 @@ ul {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   color: #f5f5f5;
+  font-size: 1rem;
 }
 
 #delete{

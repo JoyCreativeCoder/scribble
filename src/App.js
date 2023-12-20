@@ -11,10 +11,8 @@ function Root() {
 
   const [theme, setTheme] = useState("#6fb1fc");
 
-  console.log(theme)
 
   function handleHeaderChange(color) {
-    console.log("New theme color:", color);
     setTheme(color);
   }
   // useEffect(() => {

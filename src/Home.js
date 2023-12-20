@@ -45,7 +45,7 @@ const Home = ({
             </button>
           </div>
         ) : (
-          <NoteList notes={notes} />
+          <NoteList notes={notes} theme={theme} />
         )}
       </div>
     </>

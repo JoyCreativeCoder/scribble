@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const Header = ({ createAndNavigateToNewNote, theme}) => {
-
+const Header = ({ createAndNavigateToNewNote, theme }) => {
   return (
     <>
       <div className="header" style={{ backgroundColor: theme }}>
@@ -19,10 +18,20 @@ const Header = ({ createAndNavigateToNewNote, theme}) => {
 
 export default Header;
 
-export const HeaderTwo = ({ createAndNavigateToNewNote, saveNote, theme, setTheme, handleHeaderChange}) => {
+const colorPalette = [
+  { color: "#FFD700", className: "yellow" },
+  { color: "", className: "" },
+];
+
+export const HeaderTwo = ({
+  createAndNavigateToNewNote,
+  saveNote,
+  theme,
+  setTheme,
+  handleHeaderChange,
+}) => {
   const navigate = useNavigate();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-
 
   const toggleDropdown = () => {
     setDropdownOpen((prevIsDropdownOpen) => !prevIsDropdownOpen);
@@ -62,7 +71,7 @@ export const HeaderTwo = ({ createAndNavigateToNewNote, saveNote, theme, setThem
       {isDropdownOpen && (
         <div className="drop_down_container">
           <div className="color-pallet">
-            <div
+             <div
               className="yellow"
               onClick={() => {
                 handleHeaderChange("#FFD700");
@@ -103,7 +112,7 @@ export const HeaderTwo = ({ createAndNavigateToNewNote, saveNote, theme, setThem
               onClick={() => {
                 handleHeaderChange("#ff6363");
               }}
-            ></div>
+            ></div> 
           </div>
           <div className="note-list" onClick={() => navigate("/")}>
             <span className="material-symbols-outlined" id="notes-icon">

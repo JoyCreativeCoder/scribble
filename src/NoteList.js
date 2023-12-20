@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const NoteList = ({ notes, theme }) => {
+  console.log(theme, "<<<<<<<,");
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const [searchInput, setSearchInput] = useState("");
   const [filteredNotes, setFilteredNotes] = useState([]);
