@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import DOMPurify from "dompurify";
 
 const NoteList = ({ notes, theme }) => {
-  console.log(theme, "<<<<<<<,");
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const [searchInput, setSearchInput] = useState("");
   const [filteredNotes, setFilteredNotes] = useState([]);
@@ -10,11 +10,11 @@ const NoteList = ({ notes, theme }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const filtered = notes.filter((note)=>(
+    const filtered = notes.filter((note) =>
       note.content.toLowerCase().includes(searchInput.toLowerCase())
-    ))
-    setFilteredNotes(filtered)
-  },[notes, searchInput]);
+    );
+    setFilteredNotes(filtered);
+  }, [notes, searchInput]);
 
   const toggleNoteListDropdown = (noteId) => {
     setDropdownOpen((prevId) => (prevId === noteId ? null : noteId));
@@ -42,24 +42,21 @@ const NoteList = ({ notes, theme }) => {
     navigate("/");
   }
 
-  useEffect(() => {
-    console.log("Theme in NoteList:", theme);
-  }, [theme]);
-
   //search funtionality
 
-  function handleInputChange(event){
+  function handleInputChange(event) {
     setSearchInput(event.target.value);
-    }
+  }
 
-
+  const handleDoubleClick = (note) => {
+    const id = note.id;
+    navigate(`/${id}`);
+    closeDropdown();
+  };
 
   return (
     <div className="note_list_content_bg">
       <h1 className="your_scribble">Your Scribble</h1>
-      <span className="material-symbols-outlined" id="search-icon">
-        search
-      </span>
       <input
         value={searchInput}
         type="text"
@@ -67,20 +64,46 @@ const NoteList = ({ notes, theme }) => {
         placeholder="Search..."
         onChange={handleInputChange}
       />
-      <div className="container_note">
+      <div className="note-list-container">
         <ul className="note_item_container">
           {filteredNotes.map((note) => (
-            <li key={note.id} style={{ borderTop: `4px solid ${theme}` }}>
-              <div className="top-left"></div>
-              <p dangerouslySetInnerHTML={{ __html: note.content }}></p>
+            <li
+              key={note.id}
+              style={{ borderTop: `4px solid ${theme}` }}
+              className="note-item-li"
+              onDoubleClick={() => handleDoubleClick(note)}
+            >
               <span
-                id={`note_list_more_icon_${note.id}`}
-                className="material-symbols-outlined"
+                dangerouslySetInnerHTML={{ __html: note.content }}
+                className="note_preview"
+              />
+
+              <div className="bottom-right"></div>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="5"
+                viewBox="0 0 20 5"
+                fill="none"
+                className="more-icon"
                 title="Menu"
                 onClick={() => toggleNoteListDropdown(note.id)}
               >
-                more_horiz
-              </span>
+                <path
+                  d="M2.22232 0C1.00005 0 0 1.00005 0 2.22232C0 3.4446 1.00005 4.44465 2.22232 4.44465C3.4446 4.44465 4.44465 3.4446 4.44465 2.22232C4.44465 1.00005 3.4446 0 2.22232 0Z"
+                  fill="white"
+                />
+                <path
+                  d="M17.7776 0C16.5553 0 15.5553 1.00005 15.5553 2.22232C15.5553 3.4446 16.5553 4.44465 17.7776 4.44465C18.9999 4.44465 19.9999 3.4446 19.9999 2.22232C19.9999 1.00005 18.9999 0 17.7776 0Z"
+                  fill="white"
+                />
+                <path
+                  d="M9.99906 0C8.77678 0 7.77673 1.00005 7.77673 2.22232C7.77673 3.4446 8.77678 4.44465 9.99906 4.44465C11.2213 4.44465 12.2214 3.4446 12.2214 2.22232C12.2214 1.00005 11.2213 0 9.99906 0Z"
+                  fill="white"
+                />
+                id={`note-list-more-icon_${note.id}`}
+              </svg>
               {dropdownOpen === note.id && (
                 <div className="note_list_drop_container">
                   <div

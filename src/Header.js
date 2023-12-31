@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Header = ({ createAndNavigateToNewNote, theme }) => {
   return (
@@ -36,6 +36,7 @@ export const HeaderTwo = ({
   const toggleDropdown = () => {
     setDropdownOpen((prevIsDropdownOpen) => !prevIsDropdownOpen);
   };
+  
   return (
     <>
       <div className="header_two" style={{ backgroundColor: theme }}>

@@ -4,7 +4,14 @@ import "react-quill/dist/quill.snow.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const NoteForm = ({ createAndNavigateToNewNote, notes, setNotes, theme, setTheme, handleHeaderChange }) => {
+const NoteForm = ({
+  createAndNavigateToNewNote,
+  notes,
+  setNotes,
+  theme,
+  setTheme,
+  handleHeaderChange,
+}) => {
   const { id } = useParams();
   const [content, setContent] = useState("");
 
@@ -28,8 +35,8 @@ const NoteForm = ({ createAndNavigateToNewNote, notes, setNotes, theme, setTheme
 
   const handleKeyDown = (event) => {
     if (event.ctrlKey && event.key === "s") {
-      event.preventDefault(); 
-      saveNote(); 
+      event.preventDefault();
+      saveNote();
     }
   };
 
@@ -57,8 +64,18 @@ const NoteForm = ({ createAndNavigateToNewNote, notes, setNotes, theme, setTheme
           formats={formats}
           onChange={handleQuillChange}
           onKeyDown={handleKeyDown}
+          placeholder={'Take a note ...'}
         />
       </form>
+
+      <style>
+      {`
+          .editor_container .ql-toolbar .ql-stroke,
+          .editor_container .ql-toolbar .ql-fill {
+            stroke: ${theme} !important;
+          }
+        `}
+      </style>
     </div>
   );
 };
