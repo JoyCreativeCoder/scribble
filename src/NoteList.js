@@ -29,22 +29,11 @@ const NoteList = ({ notes, theme, setNotes }) => {
     closeDropdown();
   };
 
-  // const deleteNote = (note) => {
-  //   console.log('called')
-  //   const noteToDelete = notes.indexOf(note);
-  //   if (noteToDelete !== -1) {
-  //     notes.splice(noteToDelete, 1);
-  //     closeDropdown();
-  //     console.log(notes)
-  //   }
-  // };
-
   const deleteNote = (note) => {
-    const updatedNotes = notes.filter((n) => n.id !== note.id);
+    const updatedNotes = notes.filter((n) => n !== note);
     setNotes(updatedNotes);
     closeDropdown();
   };
-  
 
   if (notes.length === 0) {
     navigate("/");
@@ -151,4 +140,3 @@ const NoteList = ({ notes, theme, setNotes }) => {
 };
 
 export default NoteList;
-

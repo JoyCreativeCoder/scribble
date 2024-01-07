@@ -14,19 +14,28 @@ function Root() {
 
   function handleHeaderChange(color) {
     setTheme(color);
+    localStorage.setItem("userTheme", color);
   }
-  // useEffect(() => {
-  //   const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
-  //   setNotes(storedNotes);
-  // }, []);
+
+  useEffect(() => {
+    const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
+    setNotes(storedNotes);
+  }, []);
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("userTheme");
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  }, []);
 
   const navigate = useNavigate();
 
-    // useEffect(() => {
-    //   if (notes.length > 0) {
-    //     localStorage.setItem("notes", JSON.stringify(notes));
-    //   }
-    // }, [notes]);
+    useEffect(() => {
+      if (notes.length > 0) {
+        localStorage.setItem("notes", JSON.stringify(notes));
+      }
+    }, [notes]);
 
   function createAndNavigateToNewNote() {
     const id = uuidv4();

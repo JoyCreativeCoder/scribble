@@ -3,6 +3,7 @@ import NoteList from "./NoteList";
 
 const Home = ({
   notes,
+  setNotes,
   createAndNavigateToNewNote,
   theme,
   setTheme,
@@ -36,16 +37,20 @@ const Home = ({
                 strokeLinecap="round"
               />
             </svg>
-            <h2 className="word-mark-logo">Scribble</h2>
+            <h2 className="word-mark-logo"
+              style={{ color: ` ${theme}` }}
+            >Scribble</h2>
             <button
               className="startScribbling"
               onClick={createAndNavigateToNewNote}
+              style={{ border: `1px solid ${theme}` }}
+
             >
               Start Scribbling
             </button>
           </div>
         ) : (
-          <NoteList notes={notes} theme={theme} />
+          <NoteList notes={notes} theme={theme} setNotes={setNotes} />
         )}
       </div>
     </>
