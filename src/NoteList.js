@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import DOMPurify from "dompurify";
 
-const NoteList = ({ notes, theme }) => {
+const NoteList = ({ notes, theme, setNotes }) => {
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const [searchInput, setSearchInput] = useState("");
   const [filteredNotes, setFilteredNotes] = useState([]);
@@ -30,13 +29,22 @@ const NoteList = ({ notes, theme }) => {
     closeDropdown();
   };
 
+  // const deleteNote = (note) => {
+  //   console.log('called')
+  //   const noteToDelete = notes.indexOf(note);
+  //   if (noteToDelete !== -1) {
+  //     notes.splice(noteToDelete, 1);
+  //     closeDropdown();
+  //     console.log(notes)
+  //   }
+  // };
+
   const deleteNote = (note) => {
-    const noteToDelete = notes.indexOf(note);
-    if (noteToDelete !== -1) {
-      notes.splice(noteToDelete, 1);
-      closeDropdown();
-    }
+    const updatedNotes = notes.filter((n) => n.id !== note.id);
+    setNotes(updatedNotes);
+    closeDropdown();
   };
+  
 
   if (notes.length === 0) {
     navigate("/");
@@ -143,3 +151,4 @@ const NoteList = ({ notes, theme }) => {
 };
 
 export default NoteList;
+

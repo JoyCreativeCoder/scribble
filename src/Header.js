@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState} from "react";
 
 const Header = ({ createAndNavigateToNewNote, theme }) => {
   return (
@@ -18,10 +18,6 @@ const Header = ({ createAndNavigateToNewNote, theme }) => {
 
 export default Header;
 
-const colorPalette = [
-  { color: "#FFD700", className: "yellow" },
-  { color: "", className: "" },
-];
 
 export const HeaderTwo = ({
   createAndNavigateToNewNote,

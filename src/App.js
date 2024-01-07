@@ -22,11 +22,11 @@ function Root() {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (notes.length > 0) {
-  //     localStorage.setItem("notes", JSON.stringify(notes));
-  //   }
-  // }, [notes]);
+    // useEffect(() => {
+    //   if (notes.length > 0) {
+    //     localStorage.setItem("notes", JSON.stringify(notes));
+    //   }
+    // }, [notes]);
 
   function createAndNavigateToNewNote() {
     const id = uuidv4();
