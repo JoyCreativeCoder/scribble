@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/scribble/static/css/main.3c4b119f.css",
-    "main.js": "/scribble/static/js/main.b33f7c8d.js",
+    "main.css": "/scribble/static/css/main.2908179f.css",
+    "main.js": "/scribble/static/js/main.d2fcebba.js",
     "static/js/787.bc6b80b8.chunk.js": "/scribble/static/js/787.bc6b80b8.chunk.js",
     "index.html": "/scribble/index.html",
-    "main.3c4b119f.css.map": "/scribble/static/css/main.3c4b119f.css.map",
-    "main.b33f7c8d.js.map": "/scribble/static/js/main.b33f7c8d.js.map",
+    "main.2908179f.css.map": "/scribble/static/css/main.2908179f.css.map",
+    "main.d2fcebba.js.map": "/scribble/static/js/main.d2fcebba.js.map",
     "787.bc6b80b8.chunk.js.map": "/scribble/static/js/787.bc6b80b8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3c4b119f.css",
-    "static/js/main.b33f7c8d.js"
+    "static/css/main.2908179f.css",
+    "static/js/main.d2fcebba.js"
   ]
 }
