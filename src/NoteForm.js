@@ -3,6 +3,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const NoteForm = ({
   createAndNavigateToNewNote,
@@ -12,6 +13,8 @@ const NoteForm = ({
   setTheme,
   handleHeaderChange,
 }) => {
+  const navigate = useNavigate();
+
   const { id } = useParams();
   const [content, setContent] = useState("");
 
@@ -46,6 +49,12 @@ const NoteForm = ({
 
   const formats = ["bold", "italic", "underline", "list", "bullet", "strike"];
 
+  const deleteNoteAndNavigate = () => {
+    const updatedNotes = notes.filter((n) => n.id !== id);
+    setNotes(updatedNotes);
+    navigate("/");
+  };
+
   return (
     <div className="editor_container">
       <HeaderTwo
@@ -54,6 +63,9 @@ const NoteForm = ({
         theme={theme}
         setTheme={setTheme}
         handleHeaderChange={handleHeaderChange}
+        notes={notes}
+        setNotes={setNotes}
+        deleteNoteAndNavigate={deleteNoteAndNavigate}
       />
       <form action="" className="note-form">
         <ReactQuill
@@ -64,12 +76,12 @@ const NoteForm = ({
           formats={formats}
           onChange={handleQuillChange}
           onKeyDown={handleKeyDown}
-          placeholder={'Take a note ...'}
+          placeholder={"Take a note ..."}
         />
       </form>
 
       <style>
-      {`
+        {`
           .editor_container .ql-toolbar .ql-stroke,
           .editor_container .ql-toolbar .ql-fill {
             stroke: ${theme} !important;

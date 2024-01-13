@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import { useNavigate } from "react-router-dom";
 import NoteForm from "./NoteForm";
@@ -17,6 +17,7 @@ function Root() {
     localStorage.setItem("userTheme", color);
   }
 
+
   useEffect(() => {
     const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
     setNotes(storedNotes);
@@ -31,11 +32,7 @@ function Root() {
 
   const navigate = useNavigate();
 
-    useEffect(() => {
-      if (notes.length > 0) {
-        localStorage.setItem("notes", JSON.stringify(notes));
-      }
-    }, [notes]);
+
 
   function createAndNavigateToNewNote() {
     const id = uuidv4();
@@ -47,14 +44,12 @@ function Root() {
 
     setNotes((prevNotes) => {
       const updatedNotes = [...prevNotes, newNoteObject];
+      localStorage.setItem("notes", JSON.stringify(updatedNotes));
       return updatedNotes;
     });
 
     navigate(`/${id}`);
   }
-
-  console.log("Theme in Root:", theme);
-
 
   return (
     <div className="App">

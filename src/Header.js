@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { useState} from "react";
+import { useNavigate} from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 
 const Header = ({ createAndNavigateToNewNote, theme }) => {
   return (
@@ -18,13 +18,15 @@ const Header = ({ createAndNavigateToNewNote, theme }) => {
 
 export default Header;
 
-
 export const HeaderTwo = ({
   createAndNavigateToNewNote,
   saveNote,
   theme,
   setTheme,
   handleHeaderChange,
+  notes,
+  setNotes,
+  deleteNoteAndNavigate,
 }) => {
   const navigate = useNavigate();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -32,7 +34,27 @@ export const HeaderTwo = ({
   const toggleDropdown = () => {
     setDropdownOpen((prevIsDropdownOpen) => !prevIsDropdownOpen);
   };
-  
+
+  const closeDropdown = () => {
+    setDropdownOpen(false);
+  };
+
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        closeDropdown();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
+
   return (
     <>
       <div className="header_two" style={{ backgroundColor: theme }}>
@@ -66,9 +88,9 @@ export const HeaderTwo = ({
         </div>
       </div>
       {isDropdownOpen && (
-        <div className="drop_down_container">
+        <div className="drop_down_container" ref={dropdownRef}>
           <div className="color-pallet">
-             <div
+            <div
               className="yellow"
               onClick={() => {
                 handleHeaderChange("#FFD700");
@@ -109,7 +131,7 @@ export const HeaderTwo = ({
               onClick={() => {
                 handleHeaderChange("#ff6363");
               }}
-            ></div> 
+            ></div>
           </div>
           <div className="note-list" onClick={() => navigate("/")}>
             <span className="material-symbols-outlined" id="notes-icon">
@@ -117,11 +139,18 @@ export const HeaderTwo = ({
             </span>
             <span className="viewnoteList">Note List</span>
           </div>
-          <div className="delete-note">
+          <div
+            className="delete-note"
+            onClick={() => {
+              deleteNoteAndNavigate();
+            }}
+          >
             <span className="material-symbols-outlined" id="delete">
               delete
             </span>
-            <span className="del">Delete Note</span>
+            <span className="del">
+              Delete Note
+            </span>
           </div>
         </div>
       )}

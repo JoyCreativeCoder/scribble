@@ -1,6 +1,7 @@
 import Header from "./Header";
 import NoteList from "./NoteList";
 
+
 const Home = ({
   notes,
   setNotes,
@@ -9,6 +10,7 @@ const Home = ({
   setTheme,
   handleHeaderChange,
 }) => {
+
   const isNoteEmpty = notes.length === 0;
 
   return (
@@ -44,7 +46,6 @@ const Home = ({
               className="startScribbling"
               onClick={createAndNavigateToNewNote}
               style={{ border: `1px solid ${theme}` }}
-
             >
               Start Scribbling
             </button>

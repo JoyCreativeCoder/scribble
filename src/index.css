@@ -17,13 +17,15 @@ body {
 .header {
   background-color: #6fb1fc;
   width: 100vw;
-  height: 5vh;
+  height: 4vh;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .material-symbols-outlined {
   color: #1c1c1c;
-  margin-top: 5px;
-  margin-left: 5px;
+  /* margin-top: 5px; */
+  /* margin-left: 5px; */
   cursor: pointer;
 }
 
@@ -32,7 +34,7 @@ body {
 .header_two {
   background-color: #6fb1fc;
   width: 100vw;
-  height: 5vh;
+  height: 4vh;
   display: flex;
   justify-content: space-between;
   position: fixed;
@@ -95,6 +97,7 @@ body {
   font-size: 0.9rem;
   margin-top: 190px;
   transition: transform 0.3s ease-in-out;
+  white-space: nowrap;
 }
 
 .startScribbling:hover{
@@ -147,6 +150,10 @@ body {
   margin-right: 16px;
 }
 
+input, textarea {
+  font-size: 16px; 
+}
+
 .bottom-right {
   position: absolute;
   bottom: 0;
@@ -187,10 +194,6 @@ body {
 
 
 .note-item-li:hover {
-  background-color: #222222;
-}
-
-.note-item-li:hover {
   .bottom-right {
     display: none;
   }
@@ -225,7 +228,6 @@ body {
   left: 80%;
   top: 20%; 
   border-radius: 3px;
-  z-index: 70000000;
 }
 
 .note_list_drop_container_one {
@@ -614,6 +616,7 @@ body {
     font-size: 1.4em;
     margin: 0px;
   }
+
 }
 
 @media only screen and (max-width: 535px) {
@@ -666,6 +669,7 @@ body {
   .note-item-li {
     width: 360px;
     margin-right: 23px;
+    margin-left: 21px;
   }
 
   .search_bar {
@@ -712,6 +716,7 @@ body {
   .note-item-li {
     width: 300px;
     margin-right: 28px;
+    margin-left: 28px;
   }
 
   .more-icon{
@@ -771,11 +776,3 @@ body {
     font-size: 1.2em;
   }
 }
-
-
-
-
-
-
-
-

@@ -77,30 +77,31 @@ const NoteList = ({ notes, theme, setNotes }) => {
 
               <div className="bottom-right"></div>
 
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="5"
-                viewBox="0 0 20 5"
-                fill="none"
-                className="more-icon"
-                title="Menu"
-                onClick={() => toggleNoteListDropdown(note.id)}
-              >
-                <path
-                  d="M2.22232 0C1.00005 0 0 1.00005 0 2.22232C0 3.4446 1.00005 4.44465 2.22232 4.44465C3.4446 4.44465 4.44465 3.4446 4.44465 2.22232C4.44465 1.00005 3.4446 0 2.22232 0Z"
-                  fill="white"
-                />
-                <path
-                  d="M17.7776 0C16.5553 0 15.5553 1.00005 15.5553 2.22232C15.5553 3.4446 16.5553 4.44465 17.7776 4.44465C18.9999 4.44465 19.9999 3.4446 19.9999 2.22232C19.9999 1.00005 18.9999 0 17.7776 0Z"
-                  fill="white"
-                />
-                <path
-                  d="M9.99906 0C8.77678 0 7.77673 1.00005 7.77673 2.22232C7.77673 3.4446 8.77678 4.44465 9.99906 4.44465C11.2213 4.44465 12.2214 3.4446 12.2214 2.22232C12.2214 1.00005 11.2213 0 9.99906 0Z"
-                  fill="white"
-                />
-                id={`note-list-more-icon_${note.id}`}
-              </svg>
+              <div className="svg-bg" onClick={() => toggleNoteListDropdown(note.id)}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="5"
+                  viewBox="0 0 20 5"
+                  fill="none"
+                  className="more-icon"
+                  title="Menu"
+                >
+                  <path
+                    d="M2.22232 0C1.00005 0 0 1.00005 0 2.22232C0 3.4446 1.00005 4.44465 2.22232 4.44465C3.4446 4.44465 4.44465 3.4446 4.44465 2.22232C4.44465 1.00005 3.4446 0 2.22232 0Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M17.7776 0C16.5553 0 15.5553 1.00005 15.5553 2.22232C15.5553 3.4446 16.5553 4.44465 17.7776 4.44465C18.9999 4.44465 19.9999 3.4446 19.9999 2.22232C19.9999 1.00005 18.9999 0 17.7776 0Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M9.99906 0C8.77678 0 7.77673 1.00005 7.77673 2.22232C7.77673 3.4446 8.77678 4.44465 9.99906 4.44465C11.2213 4.44465 12.2214 3.4446 12.2214 2.22232C12.2214 1.00005 11.2213 0 9.99906 0Z"
+                    fill="white"
+                  />
+                  id={`note-list-more-icon_${note.id}`}
+                </svg>
+              </div>
               {dropdownOpen === note.id && (
                 <div className="note_list_drop_container">
                   <div

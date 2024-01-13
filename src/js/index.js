@@ -13,7 +13,6 @@ function addToList() {
 
   textArea.addEventListener("input", (e) => {
       newContent.content = e.target.value;
-      console.log(newContent);
     });
     myList.push(newContent);
 
