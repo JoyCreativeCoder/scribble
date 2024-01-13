@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/scribble/static/css/main.452b4dc3.css",
-    "main.js": "/scribble/static/js/main.a6927360.js",
-    "static/js/512.e8eb1ec5.chunk.js": "/scribble/static/js/512.e8eb1ec5.chunk.js",
+    "main.css": "/scribble/static/css/main.3c4b119f.css",
+    "main.js": "/scribble/static/js/main.b33f7c8d.js",
+    "static/js/787.bc6b80b8.chunk.js": "/scribble/static/js/787.bc6b80b8.chunk.js",
     "index.html": "/scribble/index.html",
-    "main.452b4dc3.css.map": "/scribble/static/css/main.452b4dc3.css.map",
-    "main.a6927360.js.map": "/scribble/static/js/main.a6927360.js.map",
-    "512.e8eb1ec5.chunk.js.map": "/scribble/static/js/512.e8eb1ec5.chunk.js.map"
+    "main.3c4b119f.css.map": "/scribble/static/css/main.3c4b119f.css.map",
+    "main.b33f7c8d.js.map": "/scribble/static/js/main.b33f7c8d.js.map",
+    "787.bc6b80b8.chunk.js.map": "/scribble/static/js/787.bc6b80b8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.452b4dc3.css",
-    "static/js/main.a6927360.js"
+    "static/css/main.3c4b119f.css",
+    "static/js/main.b33f7c8d.js"
   ]
 }
