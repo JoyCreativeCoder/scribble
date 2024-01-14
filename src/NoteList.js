@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const NoteList = ({ notes, theme, setNotes }) => {
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const [searchInput, setSearchInput] = useState("");
   const [filteredNotes, setFilteredNotes] = useState([]);
+  const dropdownRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -14,6 +15,20 @@ const NoteList = ({ notes, theme, setNotes }) => {
     );
     setFilteredNotes(filtered);
   }, [notes, searchInput]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        closeDropdown();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const toggleNoteListDropdown = (noteId) => {
     setDropdownOpen((prevId) => (prevId === noteId ? null : noteId));
@@ -36,6 +51,7 @@ const NoteList = ({ notes, theme, setNotes }) => {
 
     closeDropdown();
   };
+
 
   if (notes.length === 0) {
     navigate("/");
@@ -105,7 +121,7 @@ const NoteList = ({ notes, theme, setNotes }) => {
                 </svg>
               </div>
               {dropdownOpen === note.id && (
-                <div className="note_list_drop_container">
+                <div className="note_list_drop_container" ref={dropdownRef}>
                   <div
                     className="note_list_drop_container_one"
                     onClick={() => editNote(note)}
