@@ -51,6 +51,7 @@ function Root() {
     navigate(`/${id}`);
   }
 
+
   return (
     <div className="App">
       <Routes>

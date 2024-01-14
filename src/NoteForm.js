@@ -52,8 +52,10 @@ const NoteForm = ({
   const deleteNoteAndNavigate = () => {
     const updatedNotes = notes.filter((n) => n.id !== id);
     setNotes(updatedNotes);
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
     navigate("/");
   };
+
 
   return (
     <div className="editor_container">

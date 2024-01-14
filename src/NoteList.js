@@ -32,6 +32,8 @@ const NoteList = ({ notes, theme, setNotes }) => {
   const deleteNote = (note) => {
     const updatedNotes = notes.filter((n) => n !== note);
     setNotes(updatedNotes);
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
+
     closeDropdown();
   };
 

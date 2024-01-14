@@ -138,7 +138,7 @@ body {
 }
 
 .search_bar {
-  width: 484px;
+  /* width: 484px;
   height: 36px;
   border: 0.75px solid #151515;
   border-radius: 5px;
@@ -147,7 +147,20 @@ body {
   font-size: 14px;
   color: #f5f5f5;
   margin-left:30px;
-  margin-right: 16px;
+  margin-right: 16px; */
+
+    width: 80%; /* Use a percentage value */
+    max-width: 484px; 
+    height: 36px;
+    border: 0.75px solid #151515;
+    border-radius: 5px;
+    background-color: #333333;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #f5f5f5;
+    margin-left: 30px;
+    margin-right: 16px;
+  
 }
 
 input, textarea {
@@ -499,6 +512,23 @@ input, textarea {
   overflow: auto !important;
 }
 
+/* changes */
+
+.ql-toolbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #181818;
+  padding: 8px;
+  border-top: 1px solid #5a5959;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.ql-editor::before {
+  color: rgb(158, 158, 158) !important; 
+}
 
 .ql-toolbar button {
   margin: 0 10px;
@@ -523,6 +553,8 @@ input, textarea {
   background-color: #434242 !important;
   color: #f5f5f5 !important; 
 }
+
+
 
 .more-icon{
   position: absolute;
