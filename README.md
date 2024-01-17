@@ -2,6 +2,10 @@
 
 Scribble is a straightforward note-taking application built using React and React Router. It allows users to create, edit, and delete notes in a clean and user-friendly interface. The application features a rich text editor, customizable themes, and a note list for easy navigation.
 
+## Demo
+
+   Check out the live demo: [Scribble Live Demo](https://joynkwocha.github.io/scribble/)
+   
 ## Features
 
 - **Create and Edit Notes:** Users can create new notes and edit existing ones using a rich text editor powered by ReactQuill.
@@ -74,8 +78,6 @@ If you would like to contribute to Scribble, please follow these steps:
 5. Submit a pull request.
 
 ## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
